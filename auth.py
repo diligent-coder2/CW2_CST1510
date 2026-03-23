@@ -1,7 +1,7 @@
 import bcrypt
 import os
 
-USER_DATA_FILE = "users.txt"
+USER_DATA_FILE = "DATA\\users.txt"
 
 
 def hash_password(plain_text_password):
@@ -47,7 +47,7 @@ def user_exists(username):
 
 def login_user(username, password):
     """Authenticates a user by verifying their username and password."""
-    with open("users.txt", "r") as f: 
+    with open(USER_DATA_FILE, "r") as f: 
         for line in f.readlines():
             user, hashed = line.strip().split(',', 1) 
             if user == username:
@@ -97,7 +97,10 @@ def main():
             print("\n--- USER REGISTRATION ---")
             username = input("Enter a username: ").strip()
 
-            # Validate username
+            # Validate unique username
+            if user_exists(username):
+                print('Warning: username already exists.')
+                continue
             is_valid, error_msg = validate_username(username)
             if not is_valid:
                 print(f"Error: {error_msg}")
