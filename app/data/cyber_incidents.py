@@ -87,6 +87,6 @@ def get_incident_types_with_many_cases(conn, min_count=5):
 
 def get_all_cyber_incidents(conn):
     sql = 'SELECT * FROM cyber_incidents'
-    data = pd.read_sql(sql, conn)
+    data = pd.read_sql(sql, conn, index_col='incident_id')
 
     return data
