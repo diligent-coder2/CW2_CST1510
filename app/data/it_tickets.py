@@ -22,8 +22,26 @@ def insert_it_ticket(conn):
     )
     conn.commit()
 
+def update_ticket_status(conn, id, status):
+    '''Update the status of an ticket.'''
+    cur = conn.cursor() 
+    cur.execute(
+        'UPDATE it_tickets SET status = ? WHERE incident_id = ?', (status, id)
+    )
+    conn.commit()
+    cur.rowcount
+
+def delete_ticket(conn, id):
+    '''Delete a ticket from the database.'''
+    cur = conn.cursor() 
+    cur.execute(
+        'DELETE FROM it_tickets WHERE incident_id = ?', (id,)
+    )
+    conn.commit()
+    cur.rowcount
+
 def get_all_it_tickets(conn):
     sql = 'SELECT * FROM it_tickets'
     data = pd.read_sql(sql, conn)
     
-    return data
+    return data   

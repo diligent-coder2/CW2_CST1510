@@ -22,6 +22,15 @@ def insert_dataset_metadata(conn):
     )
     conn.commit()
 
+def delete_dataset(conn, id):
+    '''Delete a dataset from the database.'''
+    cur = conn.cursor() 
+    cur.execute(
+        'DELETE FROM datasets_metadata WHERE incident_id = ?', (id,)
+    )
+    conn.commit()
+    cur.rowcount
+
 def get_all_datasets_metadata(conn):
     sql = 'SELECT * FROM datasets_metadata'
     data = pd.read_sql(sql, conn)
