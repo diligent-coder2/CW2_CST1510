@@ -40,7 +40,7 @@ else:
                     st.session_state.logged_in = True
                     st.success(f"{res[1]} 🎉")
                     sleep(2)
-                    st.switch_page(Path('pages') / '1_Dashboard.py')
+                    st.switch_page(Path('pages') / 'Cyber Incidents Dashboard.py')
                 else:
                     st.warning(res[1])
                     

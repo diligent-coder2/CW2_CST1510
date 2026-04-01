@@ -33,6 +33,6 @@ def delete_dataset(conn, id):
 
 def get_all_datasets_metadata(conn):
     sql = 'SELECT * FROM datasets_metadata'
-    data = pd.read_sql(sql, conn)
+    data = pd.read_sql(sql, conn, index_col='dataset_id')
     
     return data

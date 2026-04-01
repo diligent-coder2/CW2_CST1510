@@ -42,6 +42,6 @@ def delete_ticket(conn, id):
 
 def get_all_it_tickets(conn):
     sql = 'SELECT * FROM it_tickets'
-    data = pd.read_sql(sql, conn)
+    data = pd.read_sql(sql, conn, index_col='ticket_id')
     
     return data   
