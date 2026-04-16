@@ -6,6 +6,12 @@ from time import sleep
 
 load_dotenv()
 api_key = os.environ.get("GROQ_API_KEY")
+if not api_key:
+    st.error("GROQ_API_KEY not found in environment variables.")
+    st.info("Please set the GROQ_API_KEY in your .env file and restart the app.")
+    st.info("You can obtain an API key from https://console.groq.com/keys and add it to your .env file as follows:")
+    st.code('GROQ_API_KEY=your_api_key_here', language='bash')
+    st.stop()
 client = Groq(api_key=api_key)
 
 if 'logged_in' not in st.session_state:
