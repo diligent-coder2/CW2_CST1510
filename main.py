@@ -33,8 +33,11 @@ def setup_database_complete():
     
     # Step 3: Migrate users
     print("\n[3/5] Migrating users from users.txt...")
-    migrate_users_to_db(conn)
-    print('Users have migrated.')
+    try:
+        migrate_users_to_db(conn)
+        print('Users have migrated.')
+    except FileNotFoundError:
+        print("You don't have a users.txt file to migrate.But don't worry, you can still register new users through the Streamlit interface in Week 9!")
     
     # Step 4: Load CSV data
     print("\n[4/5] Loading CSV data...")
