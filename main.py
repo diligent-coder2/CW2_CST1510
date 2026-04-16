@@ -125,4 +125,8 @@ def run_comprehensive_tests():
     print("✅ ALL TESTS PASSED!")
     print("="*60)
 
+
+setup_database_complete()
+run_comprehensive_tests()
+
 conn.close()
